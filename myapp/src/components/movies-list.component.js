@@ -4,13 +4,16 @@ import axios from 'axios';
 import RecipeReviewCard from './card.js'
 import Grid from '@material-ui/core/Grid';
 import CustomizedGridList from './gridlist';
-
+import Details from './details.component';
 
 
 const Movies = props => (
    <RecipeReviewCard  name={props.movie.show.name} image={props.movie.show.image.medium} summary={props.movie.show.summary} type={props.movie.show.type} score={props.movie.score} showDetails={props.showDetails(props.movie)}></RecipeReviewCard>
 )
 
+const Onemovie = props =>(
+  <Details name ={props.movie.show.name}></Details>
+)
 
 export default class MoviesList extends Component {
 
@@ -18,7 +21,7 @@ export default class MoviesList extends Component {
   constructor(props) {
   super(props);
   this.showDetails = this.showDetails.bind(this);
-  this.state = {movies: [] , selectedmovie : []};
+  this.state = {movies: [] , selectedmovie : [] , detail: ''};
 
   }
 
@@ -40,8 +43,15 @@ export default class MoviesList extends Component {
   this.setState({
       selectedmovie: this.state.movies.filter(el => el== movie)
     });
+    this.setState({
+        detail: 'true'
+      });
   }
 
+  detail(){
+    console.log(this.state.selectedmovie[0]);
+    return <Onemovie movie={this.state.selectedmovie[0]} />
+  }
 
   //function 2 : movielist
   movielist() {
@@ -59,7 +69,14 @@ export default class MoviesList extends Component {
 
   //render
   render() {
-  return(
+    if(this.state.detail== 'true'){
+      return(
+      <div>
+          {this.detail()}
+      </div>
+    )
+    }
+    return(
     <CustomizedGridList list=  { this.movielist() }>
     </CustomizedGridList>
       );
