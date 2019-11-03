@@ -2,7 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-
+import Container from '@material-ui/core/Container';
+import { blue } from '@material-ui/core/colors';
+import { pink } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,7 +19,11 @@ const useStyles = makeStyles(theme => ({
     height: 450,
     right: 150,
     padding:80,
+    backgroundColor:blue[50]
   },
+  container:{
+    backgroundColor: pink[100]
+  }
 }));
 
 /**
@@ -42,6 +48,7 @@ export default function CustomizedGridList(props) {
   const classes = useStyles();
 
   return (
+    <Container fixed className={classes.container}>
     <div className={classes.root}>
       <GridList cellHeight={500} className={classes.gridList} cols={3} >
         {props.list.map(tile => (
@@ -51,5 +58,6 @@ export default function CustomizedGridList(props) {
         ))}
       </GridList>
     </div>
+    </Container>
   );
 }

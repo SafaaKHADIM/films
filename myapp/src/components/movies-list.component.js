@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import RecipeReviewCard from './card.js'
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+
 import CustomizedGridList from './gridlist';
 import Details from './details.component';
 
@@ -78,10 +78,10 @@ export default class MoviesList extends Component {
     )
     }
     return(
-      <Paper >
+
     <CustomizedGridList list=  { this.movielist() }>
     </CustomizedGridList>
-    </Paper>
+
       );
   }
 
