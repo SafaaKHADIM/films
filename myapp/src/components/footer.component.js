@@ -17,7 +17,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
-
+import Image from '../footer.png'
 
 const useStyles = makeStyles(theme => ({
   text: {
@@ -35,6 +35,7 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     top: 'auto',
     bottom: 0,
+    backgroundImage: `url(${Image})`
   },
   grow: {
     flexGrow: 1,
@@ -47,6 +48,7 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     margin: '0 auto',
   },
+
 }));
 
 export default function Footer() {
@@ -61,16 +63,9 @@ export default function Footer() {
           <IconButton edge="start" color="inherit" aria-label="open drawer">
             <MenuIcon />
           </IconButton>
-          <Fab color="secondary" aria-label="add" className={classes.fabButton}>
-            <AddIcon />
-          </Fab>
+
           <div className={classes.grow} />
-          <IconButton color="inherit">
-            <SearchIcon />
-          </IconButton>
-          <IconButton edge="end" color="inherit">
-            <MoreIcon />
-          </IconButton>
+        
         </Toolbar>
       </AppBar>
     </React.Fragment>

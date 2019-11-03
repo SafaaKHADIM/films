@@ -39,14 +39,7 @@ export default function Header() {
     <div className={classes.root}>
       <AppBar position="static" className={classes.paperContainer}>
         <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+        
           <Typography className={classes.title} variant="h5" noWrap>
             Nobo Test by KHADIM Safaa
           </Typography>
