@@ -21,23 +21,6 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
 
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  toolbar: {
-    minHeight: 350,
-    alignItems: 'flex-start',
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-    alignSelf: 'flex-end',
-  },
-  paperContainer: {
-        backgroundImage: `url(${Image})`
-    },
-
   search: {
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
@@ -60,47 +43,33 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function HideOnScroll(props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({ target: window ? window() : undefined });
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
 
-HideOnScroll.propTypes = {
-  children: PropTypes.element.isRequired,
-  window: PropTypes.func,
-};
-
-export default function Header(props) {
+export default function Search(props) {
 
   const classes = useStyles();
 
   return (
 
-    <div className={classes.root}>
-      <AppBar position="static" className={classes.paperContainer}>
-        <Toolbar className={classes.toolbar}>
 
 
 
-      
+        <div className={classes.search}>
+
+            <InputBase
+            onChange={e => props.MovieList(e.target.value) }
+
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+
+          </div>
 
 
 
-          <Typography className={classes.title} variant="h5" noWrap>
-            Nobo Test by KHADIM Safaa
-          </Typography>
-
-          <IconButton edge="end" color="inherit">
-            <MoreIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    </div>
 
   );
 }

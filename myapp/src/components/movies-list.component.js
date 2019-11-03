@@ -6,13 +6,24 @@ import Grid from '@material-ui/core/Grid';
 
 import CustomizedGridList from './gridlist';
 import Details from './details.component';
+import Search from './search';
+
 
 
 const Movies = props => (
+  <div>
+
+   <RecipeReviewCard  name={props.movie.show.name} image={props.movie.show.image.medium} summary={props.movie.show.summary} type={props.movie.show.type} score={props.movie.score} showDetails={props.showDetails(props.movie)}></RecipeReviewCard>
+</div>
+)
+
+const MovieList = props => (
+
    <RecipeReviewCard  name={props.movie.show.name} image={props.movie.show.image.medium} summary={props.movie.show.summary} type={props.movie.show.type} score={props.movie.score} showDetails={props.showDetails(props.movie)}></RecipeReviewCard>
 )
 
 const Onemovie = props =>(
+
   <Details name ={props.movie.show.name} image ={props.movie.show.image.original} languange={props.movie.show.language} rating={props.movie.show.rating.average} officialSite={props.movie.show.officialSite} summary={props.movie.show.summary}></Details>
 )
 
@@ -22,8 +33,8 @@ export default class MoviesList extends Component {
   constructor(props) {
   super(props);
   this.showDetails = this.showDetails.bind(this);
-  this.state = {movies: [] , selectedmovie : [] , detail: ''};
-
+  this.showMovies = this.showMovies.bind(this);
+  this.state = {movies: [] , selectedmovie : [] , detail: '', search:''};
   }
 
 
@@ -38,6 +49,18 @@ export default class MoviesList extends Component {
       });
   }
 
+  showMovies = id =>()=> {
+    axios.get('https://api.tvmaze.com/search/shows?q='+id)
+      .then(response => {
+        this.setState({ movies: response.data });
+        this.setState({search:'true'});
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+
 
  //function 1 : showDetails
   showDetails = movie =>() =>{
@@ -49,8 +72,30 @@ export default class MoviesList extends Component {
       });
   }
 
+
+search(){
+  return <Search MovieList={this.MovieList} />
+}
+
+
+
+
+  MovieList(id){
+    this.showMovies(id);
+    return this.state.movies.map(currentmovie => {
+      if(currentmovie.show.image == null){
+        currentmovie.show.image={medium :"https://cidco-smartcity.niua.org/wp-content/uploads/2017/08/No-image-found.jpg"}
+      }
+      console.log(currentmovie);
+        console.log(this.state.selectedmovie);
+      return <MovieList movie={currentmovie} showMovies={this.showMovies} showDetails={this.showDetails} />;
+    })
+
+
+  }
+
   detail(){
-    ////////////handle exceptions 
+    ////////////handle exceptions
     //null original image
     console.log(this.state.selectedmovie[0]);
     if(this.state.selectedmovie[0].show.image == null){
@@ -80,7 +125,7 @@ export default class MoviesList extends Component {
       }
       console.log(currentmovie);
         console.log(this.state.selectedmovie);
-      return <Movies movie={currentmovie} showDetails={this.showDetails} key={currentmovie.show.id} />;
+      return <Movies movie={currentmovie} showDetails={this.showDetails} key={currentmovie.show.id} showMovies={this.showMovies}/>;
     })
   }
 
@@ -91,15 +136,25 @@ export default class MoviesList extends Component {
     if(this.state.detail== 'true'){
       return(
       <div>
+          {this.search()}
           {this.detail()}
       </div>
     )
     }
+    if(this.state.search== 'true'){
+      return(
+      <div>
+        {this.search()}
+          {this.MovieList()}
+      </div>
+    )
+    }
     return(
-
+      <div>
+    {this.search()}
     <CustomizedGridList list=  { this.movielist() }>
     </CustomizedGridList>
-
+    </div>
       );
   }
 
