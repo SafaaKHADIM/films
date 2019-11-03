@@ -60,12 +60,10 @@ export default function Footer() {
 
       <AppBar position="fixed" color="primary" className={classes.appBar}>
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="open drawer">
-            <MenuIcon />
-          </IconButton>
+          
 
           <div className={classes.grow} />
-        
+
         </Toolbar>
       </AppBar>
     </React.Fragment>

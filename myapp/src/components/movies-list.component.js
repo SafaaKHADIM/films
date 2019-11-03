@@ -13,7 +13,7 @@ const Movies = props => (
 )
 
 const Onemovie = props =>(
-  <Details name ={props.movie.show.name}></Details>
+  <Details name ={props.movie.show.name} image ={props.movie.show.image.original} languange={props.movie.show.language} rating={props.movie.show.rating.average} officialSite={props.movie.show.officialSite} summary={props.movie.show.summary}></Details>
 )
 
 export default class MoviesList extends Component {
@@ -50,7 +50,25 @@ export default class MoviesList extends Component {
   }
 
   detail(){
+    ////////////handle exceptions 
+    //null original image
     console.log(this.state.selectedmovie[0]);
+    if(this.state.selectedmovie[0].show.image == null){
+      this.state.selectedmovie[0].show.image={original :"https://cidco-smartcity.niua.org/wp-content/uploads/2017/08/No-image-found.jpg"}
+    }
+    //null average rating
+    if(this.state.selectedmovie[0].show.rating.average == null){
+      this.state.selectedmovie[0].show.rating.average="no information "
+    }
+    //null oficial site
+    if(this.state.selectedmovie[0].show.officialSite == null){
+      this.state.selectedmovie[0].show.officialSite="no information "
+    }
+    //null summary
+    if(this.state.selectedmovie[0].show.summary == null){
+      this.state.selectedmovie[0].show.summary="no information "
+    }
+
     return <Onemovie movie={this.state.selectedmovie[0]} />
   }
 
