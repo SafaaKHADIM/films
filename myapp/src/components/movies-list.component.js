@@ -58,7 +58,7 @@ export default class MoviesList extends Component {
   movielist() {
     return this.state.movies.map(currentmovie => {
       if(currentmovie.show.image == null){
-        currentmovie.show.image="test"
+        currentmovie.show.image={medium :"https://cidco-smartcity.niua.org/wp-content/uploads/2017/08/No-image-found.jpg"}
       }
       console.log(currentmovie);
         console.log(this.state.selectedmovie);
