@@ -7,16 +7,18 @@ import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Image from '../nobo.png'
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   toolbar: {
-    minHeight: 128,
+    minHeight: 450,
     alignItems: 'flex-start',
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(2),
@@ -25,6 +27,9 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     alignSelf: 'flex-end',
   },
+  paperContainer: {
+        backgroundImage: `url(${Image})`
+    }
 }));
 
 export default function Header() {
@@ -32,7 +37,7 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.paperContainer}>
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -43,7 +48,7 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h5" noWrap>
-            Nobo application
+            Nobo Test by KHADIM Safaa
           </Typography>
           <IconButton color="inherit">
             <SearchIcon />

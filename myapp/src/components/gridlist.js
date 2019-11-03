@@ -15,6 +15,8 @@ const useStyles = makeStyles(theme => ({
   gridList: {
     width: "100%",
     height: 450,
+    right: 150,
+    padding:80,
   },
 }));
 
@@ -41,7 +43,7 @@ export default function CustomizedGridList(props) {
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={400} className={classes.gridList} cols={4}>
+      <GridList cellHeight={500} className={classes.gridList} cols={3} >
         {props.list.map(tile => (
           <GridListTile key={tile.img} cols={tile.cols || 1}>
             {tile}

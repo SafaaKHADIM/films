@@ -11,6 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
+import { pink } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -19,7 +20,8 @@ import InfoIcon from '@material-ui/icons/Info';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 345,
+    maxWidth: 290,
+    backgroundColor: pink[100],
   },
   media: {
     height: 0,
@@ -38,6 +40,10 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: red[500],
   },
+  title: {
+    textColor: pink[500],
+  },
+
 }));
 
 export default function RecipeReviewCard(props) {
@@ -57,7 +63,8 @@ export default function RecipeReviewCard(props) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={props.name}
+
+        title={ <p className={classes.title} >{props.name}</p>}
         subheader={props.type}
       />
       <CardMedia
@@ -75,7 +82,7 @@ export default function RecipeReviewCard(props) {
           <FavoriteIcon />
         </IconButton>
         <IconButton
-        onClick={props.showDetails} 
+        onClick={props.showDetails}
         aria-label="info">
 
           <InfoIcon />
