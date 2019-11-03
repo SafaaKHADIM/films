@@ -15,6 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import InfoIcon from '@material-ui/icons/Info';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -50,11 +51,7 @@ export default function RecipeReviewCard(props) {
   return (
     <Card className={classes.card}>
       <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
-        }
+
         action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
@@ -77,8 +74,11 @@ export default function RecipeReviewCard(props) {
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
+        <IconButton
+        onClick={props.showDetails} 
+        aria-label="info">
+
+          <InfoIcon />
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {

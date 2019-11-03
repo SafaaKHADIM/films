@@ -41,7 +41,7 @@ export default function CustomizedGridList(props) {
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={400} className={classes.gridList} cols={3}>
+      <GridList cellHeight={400} className={classes.gridList} cols={4}>
         {props.list.map(tile => (
           <GridListTile key={tile.img} cols={tile.cols || 1}>
             {tile}
