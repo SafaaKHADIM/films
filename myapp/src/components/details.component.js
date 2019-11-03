@@ -25,11 +25,16 @@ const useStyles = makeStyles(theme => ({
   media: {
     height: 600,
   },
-  paper:{
-    padding: theme.spacing(2),
-   textAlign: 'center',
-   color: theme.palette.text.secondary,
-  },
+  // paper:{
+  //   padding: theme.spacing(2),
+  //  textAlign: 'center',
+  //  color: theme.palette.text.secondary,
+  // },
+  paper: {
+    padding: theme.spacing(3, 2),
+    width: 600,
+    margin: 10
+  }
 }));
 export default function Details(props) {
   const classes = useStyles();
@@ -50,7 +55,12 @@ export default function Details(props) {
         </div>
         </Grid>
         <Grid item xs={6}>
-          <Paper className={classes.paper}>{props.name}</Paper>
+          
+          <Paper className={classes.paper}>
+            <Typography variant="h5" component="h3">
+              {props.name}
+            </Typography>
+          </Paper>
           <Paper className={classes.paper}>average rating :{props.rating}</Paper>
           <Paper className={classes.paper}>oficial site : {props.officialSite}</Paper>
           <Paper className={classes.paper}>summary :{ ReactHtmlParser(html) }</Paper>
