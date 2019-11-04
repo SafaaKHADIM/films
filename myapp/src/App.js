@@ -14,8 +14,8 @@ function App() {
       <Header />
       <Footer />
       <br/>
-      <Route path="/list" exact component={MoviesList} />
-      <Route path="/details/:id" component={Details} />
+      <Route path="/" exact component={MoviesList} />
+      
       </div>
     </Router>
   );
