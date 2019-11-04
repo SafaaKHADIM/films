@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import Header from "./components/header.component"
 import Footer from "./components/footer.component"
 import MoviesList from "./components/movies-list.component";
-import Details from "./components/details.component";
+import Details from "./components/details/details.component";
 
 
 function App() {

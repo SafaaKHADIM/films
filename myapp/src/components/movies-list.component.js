@@ -5,7 +5,7 @@ import RecipeReviewCard from './card/card.js'
 import Grid from '@material-ui/core/Grid';
 
 import CustomizedGridList from './gridlist';
-import Details from './details.component';
+import Details from './details/details.component';
 import Search from './search';
 
 
