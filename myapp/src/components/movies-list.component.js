@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 
 import CustomizedGridList from './gridlist';
 import Details from './details/details.component';
-import Search from './search';
+import Search from './search/search';
 
 
 
