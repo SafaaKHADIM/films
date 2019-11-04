@@ -133,7 +133,7 @@ search(){
     if(this.state.detail== 'true'){
       return(
       <div>
-          {this.search()}
+         
           
           {this.detail()}
       </div>
