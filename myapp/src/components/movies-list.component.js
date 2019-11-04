@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import RecipeReviewCard from './card.js'
+import RecipeReviewCard from './card/card.js'
 import Grid from '@material-ui/core/Grid';
 
 import CustomizedGridList from './gridlist';
@@ -149,7 +149,7 @@ search(){
       </div>
     )
     }
-  
+
     return(
       <div>
     {this.search()}
