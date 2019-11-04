@@ -4,7 +4,7 @@ import axios from 'axios';
 import RecipeReviewCard from './card/card.js'
 import Grid from '@material-ui/core/Grid';
 
-import CustomizedGridList from './gridlist';
+import CustomizedGridList from './gridlist/gridlist';
 import Details from './details/details.component';
 import Search from './search/search';
 
