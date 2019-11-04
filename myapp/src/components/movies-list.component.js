@@ -49,7 +49,8 @@ export default class MoviesList extends Component {
       });
   }
 
-  showMovies = id =>()=> {
+  showMovies(id) {
+    console.log('shoooooooooooooooooooooooooooooooooooooooow');
     axios.get('https://api.tvmaze.com/search/shows?q='+id)
       .then(response => {
         this.setState({ movies: response.data });
@@ -74,14 +75,18 @@ export default class MoviesList extends Component {
 
 
 search(){
-  return <Search MovieList={this.MovieList} />
+  console.log('seaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaarch');
+
+  return <Search MovieList={this.showMovies} />
 }
 
 
 
 
-  MovieList(id){
-    this.showMovies(id);
+  MovieList = id =>()=>{
+    console.log("aaaaaaaaaaaaaaaaaaaaaaa");
+    console.log(this);
+    //this.showMovies(id);
     return this.state.movies.map(currentmovie => {
       if(currentmovie.show.image == null){
         currentmovie.show.image={medium :"https://cidco-smartcity.niua.org/wp-content/uploads/2017/08/No-image-found.jpg"}
@@ -89,7 +94,9 @@ search(){
       console.log(currentmovie);
         console.log(this.state.selectedmovie);
       return <MovieList movie={currentmovie} showMovies={this.showMovies} showDetails={this.showDetails} />;
-    })
+    }
+
+  )
 
 
   }
@@ -133,6 +140,7 @@ search(){
 
   //render
   render() {
+
     if(this.state.detail== 'true'){
       return(
       <div>
@@ -141,14 +149,7 @@ search(){
       </div>
     )
     }
-    if(this.state.search== 'true'){
-      return(
-      <div>
-        {this.search()}
-          {this.MovieList()}
-      </div>
-    )
-    }
+  
     return(
       <div>
     {this.search()}
