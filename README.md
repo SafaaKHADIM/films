@@ -1,7 +1,7 @@
-# Test technique 
+# Movies 
 
 ## Introduction
-le test est sous forme d'une application ReactJS avec Material UI qui présente les features suivantes sur deux pages:
+c'est une application ReactJS avec Material UI qui présente les features suivantes sur deux pages:
 * Un header commun
 * Un footer commun
 * La première page propose un bouton de recherche
